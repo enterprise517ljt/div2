@@ -1,6 +1,5 @@
 package com.xicheng.acitivi.port.controller.user;
 
-import com.xicheng.acitivi.port.dto.LoginReq;
 import com.xicheng.acitivi.port.dto.SmallSixRenReq;
 import com.xicheng.acitivi.port.dto.SmallSixRenResp;
 import com.xicheng.acitivi.port.service.SmallLiuRenService;
@@ -18,18 +17,11 @@ public class SmallLiuRenController {
     private final SmallLiuRenService smallLiuRenService;
 
 
-    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "http://127.0.0.1:8080")
     @PostMapping("/api/user/small-liu-ren-test")
     public SmallSixRenResp findAllPublic(@RequestBody @Validated SmallSixRenReq smallSixRenReq) {
+        log.info("进入后端接口");
         return smallLiuRenService.getSmallRes(smallSixRenReq);
-    }
-
-
-    @CrossOrigin(origins = "*")
-    @PostMapping("/api/login")
-    public Boolean login(@RequestBody @Validated LoginReq loginReq) {
-        log.info("登录请求" + loginReq);
-        return loginReq.getUsername().equals(loginReq.getPassword());
     }
 
 }

@@ -27,7 +27,7 @@ public class SmallLiuRenService {
         int year = LocalDateTime.now().getYear();
         int time = isTime(num1, num2, num3);
         int x, y, z;
-        if (isTime.equals("0")) {
+        if (!isTime.equals("T") && !isTime.equals("t")) {
             time = 2;
         }
 
@@ -56,7 +56,7 @@ public class SmallLiuRenService {
         List<NineRenEnum> nineRenEnum = getNineRenEnum(x, y, z);
 
         String res1 =
-                 nineRenEnum.get(0).name + "(" + nineRenEnum.get(0).wuXingEnum.name + ") ：" + nineRenEnum.get(0).desc + "/";
+                "[前期]" + nineRenEnum.get(0).name + "(" + nineRenEnum.get(0).wuXingEnum.name + ") ：" + nineRenEnum.get(0).desc + "/";
         String zhong = null;
         if (nineRenEnum.get(1).wuXingEnum.ke == nineRenEnum.get(0).wuXingEnum.name) {
             zhong = "克";
@@ -67,7 +67,7 @@ public class SmallLiuRenService {
 
         }
         String res2 =
-                 nineRenEnum.get(1).name + "(" + nineRenEnum.get(1).wuXingEnum.name + ") ：" + nineRenEnum.get(1).desc + "/" + (zhong != null ? zhong + "[前]" : "");
+                "[中期]" + nineRenEnum.get(1).name + "(" + nineRenEnum.get(1).wuXingEnum.name + ") ：" + nineRenEnum.get(1).desc + "/" + (zhong != null ? zhong + "[前]" : "");
         String hou = null;
         if (nineRenEnum.get(2).wuXingEnum.ke == nineRenEnum.get(1).wuXingEnum.name) {
             hou = "克";
@@ -78,7 +78,7 @@ public class SmallLiuRenService {
 
         }
         String res3 =
-                nineRenEnum.get(2).name + "(" + nineRenEnum.get(2).wuXingEnum.name + ") ：" + nineRenEnum.get(2).desc + "/" + (hou != null ? hou + "[中]" : "");
+                "[后期]" + nineRenEnum.get(2).name + "(" + nineRenEnum.get(2).wuXingEnum.name + ") ：" + nineRenEnum.get(2).desc + "/" + (hou != null ? hou + "[中]" : "");
         SmallSixRenResp smallSixRenResp = new SmallSixRenResp();
         smallSixRenResp.setQian(res1).setZhong(res2).setHou(res3);
         return smallSixRenResp;
